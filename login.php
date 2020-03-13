@@ -1,20 +1,23 @@
 <?php 
-    session_start();
-
-    require "static/login.html";
+ session_start();
     require "db_handler.php";
 
-    $handler = new db_handler;
-    
-    $email_id = $_POST['mail_id'];
-    $password = $_POST['password'];
-    $phone_number = $_POST['phone_number'];
-
-    if($handler->sign_up($email_id , $password , $phone_number)){
-        $_SESSION["logged_in"] = true;
+    $db = new db_handler;
+    $info;
+    if($_POST["method"] == "sign_up"){
+        $info = $db->sign_up($_POST["mail_id"] , $_POST["phone_number"] , $POST["password"]);
     }
     else{
-        $_SESSION["logged_in"] = false;
+        $info = $db->sign_in($_POST["mail_id"] , $POST["password"]);
     }
-
+    if($info){
+        echo "<h1>Success</h1>";
+        $_SESSION["mail_id"] = $_POST["mail_id"];
+        header("location:http://127.0.0.1:8080/index.php");
+        die();
+    }
+    else{
+        header("location:http://127.0.0.1:8080/static/login.html");
+        die();
+    }
 ?>
