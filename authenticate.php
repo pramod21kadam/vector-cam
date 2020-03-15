@@ -4,7 +4,7 @@
     $db = new db_handler;
     $info;
     if($_POST["intent"] == "sign_up"){
-        $info = $db->sign_up($_POST["mail_id"] , $_POST["phone_number"] , $POST["password"]);
+        $info = $db->sign_up($_POST['f_name'] , $_POST['l_name'] , $_POST["mail_id"] , $POST["password"]);
     }
     else{
         $info = $db->sign_in($_POST["mail_id"] , $POST["password"]);
