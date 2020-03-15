@@ -11,8 +11,8 @@
             
             <div id="intent_card" class="mx-auto container">
                 <div class="row row-cols-2">
-                    <div class="col" id="sign_in" onclick="set_signin()">Sign In</div>
-                    <div class="col" id="sign_up" onclick="set_signup()">Sign Up</div>
+                    <div class="col" id="sign_in" onclick="click_effect(true)" onmouseover="hover_effect(true)" onmouseout="mouseout_effect(true)">Sign In</div>
+                    <div class="col" id="sign_up" onclick="click_effect(false)" onmouseover="hover_effect(false)" onmouseout="mouseout_effect(false)">Sign Up</div>
                 </div>
             </div>
 
@@ -36,18 +36,47 @@
         
     </body>
 
+
+
     <script>
-        function set_signin(){
-            document.getElementById("intent").value = "sign_in";
-            document.getElementById("sign_in").style.borderBottom = "solid";
-            document.getElementById("sign_up").style.borderBottom = "none";
-        }
-        function set_signup(){
-            document.getElementById("intent").value = "sign_up";
-            document.getElementById("sign_in").style.borderBottom = "none";
-            document.getElementById("sign_up").style.borderBottom = "solid";
+        var s_in_set = true;
+        function click_effect(s_in){
+            if(s_in){
+                document.getElementById("intent").value = "sign_in";
+                document.getElementById("sign_in").style.borderBottom = "solid";
+                document.getElementById("sign_up").style.borderBottom = "unset";
+                s_in_set = true;
+            }
+            else{
+                document.getElementById("intent").value = "sign_up";
+                document.getElementById("sign_in").style.borderBottom = "unset";
+                document.getElementById("sign_up").style.borderBottom = "solid";
+                s_in_set = false;
+            }
         }
 
+        function hover_effect(s_in){
+            if(s_in){
+                document.getElementById("sign_in").style.borderBottom = "solid";
+                document.getElementById("sign_up").style.borderBottom = "unset";
+            }
+            else{
+                document.getElementById("sign_in").style.borderBottom = "unset";
+                document.getElementById("sign_up").style.borderBottom = "solid";   
+            }
+        }
+
+        function mouseout_effect(){
+            document.getElementById("sign_up").style.borderBottom = "unset";
+            document.getElementById("sign_in").style.borderBottom = "unset";
+            if(s_in_set){
+                document.getElementById("sign_in").style.borderBottom = "solid";
+            } 
+            else{
+                document.getElementById("sign_up").style.borderBottom = "solid";   
+            }
+        }
+        
         
     </script>
 

@@ -17,3 +17,7 @@
     padding: 20px;
     cursor: pointer;
 }
+
+#sign_up:hover ,  #sign_in:hover{
+    border-bottom: solid;
+}
