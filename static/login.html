@@ -8,7 +8,6 @@
 
     <body>
         <span class="align-middle">
-            
             <div id="intent_card" class="mx-auto container">
                 <div class="row row-cols-2">
                     <div class="col" id="sign_in" onclick="click_effect(true)" onmouseover="hover_effect(true)" onmouseout="mouseout_effect(true)">Sign In</div>
@@ -40,6 +39,9 @@
 
     <script>
         var s_in_set = true;
+        document.getElementById("sign_in").style.transition = "all ease-in-out 0.1s";
+        document.getElementById("sign_up").style.transition = "all ease-in-out 0.1s";
+                
         function click_effect(s_in){
             if(s_in){
                 document.getElementById("intent").value = "sign_in";
