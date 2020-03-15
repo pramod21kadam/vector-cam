@@ -2,29 +2,50 @@
 <html>
     <head>
         <title>VectorCam-Login</title>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/login.css">
     </head>
 
     <body>
-            <ul>
-                <li onclick="set_signup()">sign up</li>
-                <li onclick="set_signin()">sign in</li>
-            </ul>
-            <form action="../login.php" method="POST">
-                <input type="hidden" value="sign_up" name="method" id="method">
-                <input type="email" name="mail_id" placeholder="Email Address" required>
-                <input type="text" name="phone_number" placeholder="Phone number" pattern="[0-9]{10}">
-                <input type="password" name="password" placeholder="password"  required>
-                <input type="submit" value="Sign Up">
-            </form>
-    </body>
+        <span class="align-middle">
+            
+            <div id="intent_card" class="mx-auto container">
+                <div class="row row-cols-2">
+                    <div class="col" id="sign_in" onclick="set_signin()">Sign In</div>
+                    <div class="col" id="sign_up" onclick="set_signup()">Sign Up</div>
+                </div>
+            </div>
 
+            <br>
+
+            <div id="login_card" class="mx-auto">
+                <form action="../authenticate.php" method="POST">
+                    <input type="hidden" value="sign_in" id="intent" name="intent">
+                    <div class="form-group">
+                        <label for="mail_id">Email address</label>
+                        <input type="email" class="form-control" id="mail_id" aria-describedby="emailHelp" name="mail_id">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </span>
+        
+    </body>
 
     <script>
         function set_signin(){
-            document.getElementById("method").value = "sign_in";
+            document.getElementById("intent").value = "sign_in";
+            document.getElementById("sign_in").style.borderBottom = "solid";
+            document.getElementById("sign_up").style.borderBottom = "none";
         }
         function set_signup(){
-            document.getElementById("method").value = "sign_up";
+            document.getElementById("intent").value = "sign_up";
+            document.getElementById("sign_in").style.borderBottom = "none";
+            document.getElementById("sign_up").style.borderBottom = "solid";
         }
 
         

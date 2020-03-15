@@ -1,0 +1,19 @@
+#login_card{
+   width: 40%;
+}
+#intent_card{
+    text-align: center;
+    width: 40%;
+    margin-bottom: 20px;
+    margin-top: 200px;
+
+}
+#sign_in{
+    border-bottom: solid;
+    padding: 20px;
+    cursor: pointer;
+}
+#sign_up{
+    padding: 20px;
+    cursor: pointer;
+}
