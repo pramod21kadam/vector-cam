@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 17, 2020 at 07:39 AM
+-- Generation Time: Mar 17, 2020 at 11:28 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -21,7 +22,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `vector_cam`
 --
-DROP DATABASE IF EXISTS `vector_cam`;
 CREATE DATABASE IF NOT EXISTS `vector_cam` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `vector_cam`;
 
@@ -31,43 +31,31 @@ USE `vector_cam`;
 -- Table structure for table `cart`
 --
 
-DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
   `cart_id` varchar(50) DEFAULT NULL,
   `payment_id` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Truncate table before insert `cart`
---
-
-TRUNCATE TABLE `cart`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `cart_item`
 --
 
-DROP TABLE IF EXISTS `cart_item`;
 CREATE TABLE `cart_item` (
   `cart_id` varchar(50) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
-  `amount` int(11) DEFAULT NULL
+  `amount` int(11) DEFAULT NULL,
+  `product_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Truncate table before insert `cart_item`
---
-
-TRUNCATE TABLE `cart_item`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `customer`
 --
 
-DROP TABLE IF EXISTS `customer`;
 CREATE TABLE `customer` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
@@ -77,25 +65,12 @@ CREATE TABLE `customer` (
   `payment_id` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Truncate table before insert `customer`
---
-
-TRUNCATE TABLE `customer`;
---
--- Dumping data for table `customer`
---
-
-INSERT DELAYED IGNORE INTO `customer` (`email`, `password`, `first_name`, `last_name`, `address`, `payment_id`) VALUES
-('123@gmail.com', '123', 'pramod', 'kadam', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `payment`
 --
 
-DROP TABLE IF EXISTS `payment`;
 CREATE TABLE `payment` (
   `payment_id` varchar(50) NOT NULL,
   `payment_type` varchar(50) NOT NULL,
@@ -106,18 +81,12 @@ CREATE TABLE `payment` (
   `payment_status` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Truncate table before insert `payment`
---
-
-TRUNCATE TABLE `payment`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `place_order`
 --
 
-DROP TABLE IF EXISTS `place_order`;
 CREATE TABLE `place_order` (
   `payment_id` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -125,18 +94,12 @@ CREATE TABLE `place_order` (
   `cart_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Truncate table before insert `place_order`
---
-
-TRUNCATE TABLE `place_order`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `product`
 --
 
-DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `product_id` varchar(50) NOT NULL,
   `product_name` varchar(50) DEFAULT NULL,
@@ -144,11 +107,6 @@ CREATE TABLE `product` (
   `product_availability` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Truncate table before insert `product`
---
-
-TRUNCATE TABLE `product`;
 --
 -- Indexes for dumped tables
 --
@@ -161,6 +119,12 @@ ALTER TABLE `cart`
   ADD KEY `email` (`email`),
   ADD KEY `cart_id` (`cart_id`),
   ADD KEY `cart_id_2` (`cart_id`);
+
+--
+-- Indexes for table `cart_item`
+--
+ALTER TABLE `cart_item`
+  ADD KEY `fk_product_id` (`product_id`);
 
 --
 -- Indexes for table `customer`
@@ -202,6 +166,12 @@ ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`email`) REFERENCES `customer` (`email`);
 
 --
+-- Constraints for table `cart_item`
+--
+ALTER TABLE `cart_item`
+  ADD CONSTRAINT `fk_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+
+--
 -- Constraints for table `customer`
 --
 ALTER TABLE `customer`
@@ -219,6 +189,7 @@ ALTER TABLE `payment`
 ALTER TABLE `place_order`
   ADD CONSTRAINT `place_order_ibfk_1` FOREIGN KEY (`email`) REFERENCES `customer` (`email`),
   ADD CONSTRAINT `place_order_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`payment_id`);
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

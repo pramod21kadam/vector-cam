@@ -2,14 +2,16 @@
    class db_handler{
         var $conn;
 
+        //Constructor
         function __construct() {
             $servername = "localhost";
             $username = "username";
             $password = "password";
             $db = 'vector_cam';
-            $this->conn = new mysqli($servername, $username, $password , $db);
+            $this->conn = new mysqli( $servername, $username, $password, $db );
         }
 
+        //Signup function
         public function sign_up($f_name , $l_name , $email_id , $password){
             $sql = "INSERT INTO customer(email,password,first_name,last_name) values('$email_id' ,'$password','$f_name ',' $l_name');";
             if ( ($this->conn->query($sql)) == TRUE) {
@@ -20,7 +22,8 @@
             }
 
         }
-        
+
+        //Signin function
         public function sign_in($email_id , $password){
             $sql = "SELECT count(*) from customer where email ='". $email_id ."' password = '". $password ."';";
             $result = $this->conn->query(sql);
@@ -30,22 +33,51 @@
             return true;
         }
 
+
+        //display product information
+        //returns array
+        // order id, name, price, quantity
         public function show_products(){
             $sql = "SELECT * FROM PRODUCTS";
-            $result = $this->conn->query($sql);
-            return $sql;
+            $result =  mysqli_fetch_row($this->conn->query($sql));
+            return $result;
         }
 
-        public function add_to_cart(){
 
+        // function creates cart (if not) and adds item to cart 
+        public function add_to_cart($product_id, $quantity){
+            
         }
 
-        
-        
-        
+        // function deletes cart
+        public function delete_cart(){
+            
+        }
+
+        // function returns cart details
+        // order cart_id, quantity, amount, product_id 
+        public function show_cart(){
+            $cart_id = check_cart();
+            if ($cart_id){
+                // get number fo items and amount from cart_item
+                $sql = "select * from cart_item where cart_id= $cart";
+                $cart_info= mysqli_fetch_row($this->conn->query($sql));
+                return $cart_info;
+            }
+            else{
+                return false;
+            }
+        }
+
         // private functions
         private function check_cart(){
             $email = session_id();
+            $cart_id = mysqli_fetch_row($this->conn->query("SELECT cart_id FROM cart WHERE email='$email';"));
+            if ($cart_id == null){
+                return false;
+            }else{
+            return $cart_id;
+            }
         }
     }
 ?>
