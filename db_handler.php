@@ -13,15 +13,15 @@
 
         //Signup function
         public function sign_up($f_name , $l_name , $email_id , $password){
-            echo "password: $password";
-            $sql = "insert INTO customer(email,password,first_name,last_name) values('$email_id','$password','$f_name ',' $l_name');";
-            if ( ($this->conn->query($sql)) == TRUE) {
-                return TRUE;
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-                return FALSE;
+            if($password and $f_name and $l_name and $email){
+                $sql = "insert INTO customer(email,password,first_name,last_name) values('$email_id','$password','$f_name ',' $l_name');";
+                if ( ($this->conn->query($sql)) == TRUE) {
+                    return TRUE;
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                    return FALSE;
+                }
             }
-
         }
 
         //Signin function
