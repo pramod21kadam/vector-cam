@@ -30,8 +30,9 @@
             return true;
         }
 
-        public function delete_account($email , $password){
-           return true;
+        public function show_products(){
+            
         }
+
     }
 ?>
