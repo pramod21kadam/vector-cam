@@ -31,7 +31,9 @@
         }
 
         public function show_products(){
-            
+            $sql = "SELECT * FROM PRODUCTS"
+            $result = $conn->query($sql);
+            return $sql;
         }
 
     }
