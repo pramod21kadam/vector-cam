@@ -7,7 +7,7 @@
             $username = "username";
             $password = "password";
             $db = 'vector_cam';
-            $this->conn = new mysqli_connect($servername, $username, $password , $db);
+            $this->conn = new mysqli($servername, $username, $password , $db);
         }
 
         public function sign_up($f_name , $l_name , $email_id , $password){
