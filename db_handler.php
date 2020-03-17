@@ -5,7 +5,7 @@
         function __construct() {
             $servername = "localhost";
             $username = "username";
-            $password = "localhost";
+            $password = "password";
 
             $this->conn = mysqli_connect($servername, $username, $password);
         }
@@ -36,5 +36,16 @@
             return $sql;
         }
 
+        public function add_to_cart(){
+
+        }
+
+        
+        
+        
+        // private functions
+        private function check_cart(){
+            @email = session_id();
+        }
     }
 ?>
