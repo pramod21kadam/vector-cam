@@ -11,8 +11,8 @@
         }
 
         public function sign_up($f_name , $l_name , $email_id , $password){
-            $sql = "INSERT INTO customer(email,password,first_name,last_name) values('". $email_id ."','". $password ."','". $f_name ."','".$l_name."');";
-            if ( $conn->query($sql) === TRUE) {
+            $sql = "INSERT INTO customer(email,password,first_name,last_name) values('$email_id' ,'$password','$f_name ',' $l_name');";
+            if ( ($conn->query($sql)) == TRUE) {
                 return TRUE;
             } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
@@ -22,7 +22,7 @@
         }
         
         public function sign_in($email_id , $password){
-            $sql = "select count(*) from customer where email ='". $email_id ."' password = '". $password ."';";
+            $sql = "SELECT count(*) from customer where email ='". $email_id ."' password = '". $password ."';";
             $result = $conn->query(sql);
             if ($result == 0){
                 return false;
@@ -45,7 +45,7 @@
         
         // private functions
         private function check_cart(){
-            @email = session_id();
+            $email = session_id();
         }
     }
 ?>
