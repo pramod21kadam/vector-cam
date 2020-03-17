@@ -13,7 +13,8 @@
 
         //Signup function
         public function sign_up($f_name , $l_name , $email_id , $password){
-            $sql = "INSERT INTO customer(email,password,first_name,last_name) values('$email_id' ,'$password','$f_name ',' $l_name');";
+            echo "password: $password";
+            $sql = "insert INTO customer(email,password,first_name,last_name) values('$email_id','$password','$f_name ',' $l_name');";
             if ( ($this->conn->query($sql)) == TRUE) {
                 return TRUE;
             } else {
@@ -26,8 +27,8 @@
         //Signin function
         public function sign_in($email_id , $password){
             $sql = "SELECT count(*) from customer where email ='". $email_id ."' password = '". $password ."';";
-            $result = $this->conn->query(sql);
-            if ($result == 0){
+            $result = mysqli_fetch_row($this->conn->query(sql));
+            if ($result){
                 return false;
             }
             return true;
@@ -46,7 +47,10 @@
 
         // function creates cart (if not) and adds item to cart 
         public function add_to_cart($product_id, $quantity){
-            
+            $cart_info = $this->show_cart();
+            if($cart_info){
+                
+            }
         }
 
         // function deletes cart
