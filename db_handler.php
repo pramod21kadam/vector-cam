@@ -5,33 +5,30 @@
         //Constructor
         function __construct() {
             $servername = "localhost";
-            $username = "username";
-            $password = "password";
+            $username = "onkar";
+            $password = "onkar123";
             $db = 'vector_cam';
             $this->conn = new mysqli( $servername, $username, $password, $db );
         }
 
         //Signup function
         public function sign_up($f_name , $l_name , $email_id , $password){
-            if($password and $f_name and $l_name and $email){
-                $sql = "insert INTO customer(email,password,first_name,last_name) values('$email_id','$password','$f_name ',' $l_name');";
-                if ( ($this->conn->query($sql)) == TRUE) {
-                    return TRUE;
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                    return FALSE;
-                }
+            $sql = "insert into customer(password , email,first_name,last_name) values('".$password."','".$email_id."','".$f_name."','".$l_name."');";
+            if ( ($this->conn->query($sql)) == true) {
+                return true;
+            } else {
+                return false;
             }
         }
 
         //Signin function
         public function sign_in($email_id , $password){
-            $sql = "SELECT count(*) from customer where email ='". $email_id ."' password = '". $password ."';";
-            $result = mysqli_fetch_row($this->conn->query(sql));
-            if ($result){
-                return false;
+            $sql = "select * from customer where email ='".$email_id."' and password = '".$password."';";
+            $result = $this->conn->query($sql);
+            if ($result->num_rows > 0){
+                return true;
             }
-            return true;
+            return false;
         }
 
 
@@ -82,6 +79,11 @@
             }else{
             return $cart_id;
             }
+        }
+
+
+        function __destruct(){
+            $this->conn->close();
         }
     }
 ?>

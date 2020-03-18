@@ -24,11 +24,11 @@
                     <div class="row row-cols-2" id="sign_up_details">
                         <div class="form-group col">
                             <label for="f_name">First Name</label>
-                            <input type="text" class="form-control" id="f_name" name="f_name" required>
+                            <input type="text" class="form-control" id="f_name" name="f_name">
                         </div>
                         <div class="form-group col">
                             <label for="l_name">Last Name</label>
-                            <input type="text" class="form-control" id="l_name" name="l_name" required>
+                            <input type="text" class="form-control" id="l_name" name="l_name">
                         </div>
                     </div>
 
@@ -54,6 +54,10 @@
         document.getElementById("sign_in").style.transition = "all ease-in-out 0.1s";
         document.getElementById("sign_up").style.transition = "all ease-in-out 0.1s";
         document.getElementById("sign_up_details").style.display = "none";
+        document.getElementById("f_name").required = false;
+        document.getElementById("l_name").required = false;
+        
+
 
         function click_effect(s_in){
             if(s_in){
@@ -61,6 +65,8 @@
                 document.getElementById("sign_in").style.borderBottom = "solid";
                 document.getElementById("sign_up").style.borderBottom = "unset";
                 document.getElementById("sign_up_details").style.display = "none";
+                document.getElementById("f_name").required = false;
+                document.getElementById("l_name").required = false;
                 s_in_set = true;
             }
             else{
@@ -68,7 +74,8 @@
                 document.getElementById("sign_in").style.borderBottom = "unset";
                 document.getElementById("sign_up").style.borderBottom = "solid";
                 document.getElementById("sign_up_details").style.display = "flex";
-                
+                document.getElementById("f_name").required = true;
+                document.getElementById("l_name").required = true;
                 s_in_set = false;
             }
         }
