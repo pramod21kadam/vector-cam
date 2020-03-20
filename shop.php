@@ -10,28 +10,19 @@
 
     <body>
         <?php 
-            require "nav_bar.php";
+            require "php_includes/nav_bar.php";
+            require "php_includes/db_handler.php";
+            $db = new db_handler;
+            $featured_product = $db->get_featured_products();
         ?>
         
         <h1>Products</h1>
         <div id = "store_products" class="mx-auto">
-            <div id = "featured_product" class="card mb-3 rounded">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="static/images/products/p1.jpg" class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h1 class="card-title">Vector Cam</h1>
-                            <p class="card-text">Smart security camera on which you can trust.</p>
-                            <button type="button" class="btn btn-lg btn-outline-success">Learn more</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <?php
-                require "product_cards.php";
+                foreach($featured_product as $fp){
+                    require "php_includes/featured_product_card.php";
+                }
+                require "php_includes/product_cards.php";
             ?>
         </div>
         

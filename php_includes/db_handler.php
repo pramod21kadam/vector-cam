@@ -158,11 +158,22 @@
         //returns 2-D array
         // order id, name, price, quantity
         public function show_products(){
-            $sql = "SELECT * FROM PRODUCTS";
-            $result = $this -> conn -> query($sql);
+            $sql = "SELECT * FROM product";
+            $result = $this->conn->query($sql);
             $products = array();
-            while( $row = $result->fetch_row() ){
+            while( $row = $result->fetch_assoc() ){
                 array_push($products, $row);
+            }
+            return $products;
+        }
+
+        //function to get list of featured products
+        public function get_featured_products(){
+            $sql = "select * from product where product_id in (select * from featured_product);";
+            $result = $this->conn->query($sql);
+            $products = array();
+            while($row = $result->fetch_assoc()){
+                array_push( $products , $row);
             }
             return $products;
         }

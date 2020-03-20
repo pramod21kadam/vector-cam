@@ -1,0 +1,16 @@
+<?php
+    echo('<div id = "featured_product" class="card mb-3 rounded">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="static/images/products/'.$fp["product_id"].'.jpg" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h1 class="card-title">'.$fp["product_name"].'</h1>
+                    <p class="card-text">'.$fp["summary"].'</p>
+                    <button id = "'.$fp["product_id"].'" type="button" class="btn btn-lg btn-outline-success">Learn more</button>
+                </div>
+            </div>
+        </div>
+    </div>');
+?>
