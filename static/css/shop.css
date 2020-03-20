@@ -1,0 +1,49 @@
+body{
+    line-height: 1.5;
+    color: #222;
+    font-family: Rubik,sans-serif;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+
+h1{
+    font-size: 2.6rem; 
+    line-height: 1.5;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+hr{
+    border-width: 2px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+#store_products{
+    width: 73%;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1300px;
+}
+#featured_product{
+    transition: ease-in-out;
+    transition-duration: 500ms;
+    padding-top: 2%; 
+    padding-bottom: 2%;
+    max-width: 1300px;
+}
+#featured_product:hover{
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+}
+
+.product_card{
+    transition: ease-in-out;
+    transition-duration: 200ms;
+
+}
+.product_card:hover{
+    box-shadow: 0 1rem 1rem rgba(0,0,0,.175) !important
+}

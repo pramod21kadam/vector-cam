@@ -3,8 +3,8 @@
         private $conn;
         function __construct() {
             $servername = "localhost";
-            $username = "username";
-            $password = "password";
+            $username = "onkar";
+            $password = "onkar123";
             $db = 'vector_cam';
             $this->conn = new mysqli( $servername, $username, $password, $db );
         }
@@ -12,10 +12,10 @@
         public function sign_up($f_name , $l_name , $email_id , $password){
                 $sql = "INSERT INTO customer(email,password,first_name,last_name) VALUES('$email_id','$password','$f_name ',' $l_name');";
                 if ( ($this->conn->query($sql))) {
-                    return TRUE;
+                    return true;
                     $this->conn->commit();
                 } else {
-                    return FALSE;
+                    return false;
                 }
         }
 
