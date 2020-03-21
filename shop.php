@@ -65,7 +65,7 @@
 
     <script>
         function learn_more(product){
-            window.location.href = "http://127.0.0.1:8080/more_info.php?E="+product.id;
+            window.location.href = "http://127.0.0.1:8080/more_info.php?product_id="+product.id;
         }
     </script>
 

@@ -177,6 +177,13 @@
             return $products;
         }
 
+        //function to get inforamtion about product using product id
+        public function get_product_info($product_id){
+            $sql = "select * from product where product_id = '".$product_id."'";
+            $result = $this->conn->query($sql);
+            return $result->fetch_assoc();
+        }
+
 
         private function check_cart(){
             $email = $_SESSION["mail_id"];
