@@ -156,9 +156,8 @@
 
         //display product information
         //returns 2-D array
-        // order id, name, price, quantity
-        public function show_products(){
-            $sql = "SELECT * FROM product";
+        public function get_products(){
+            $sql = " select * from product where product_id not in (select * from featured_product);";
             $result = $this->conn->query($sql);
             $products = array();
             while( $row = $result->fetch_assoc() ){
