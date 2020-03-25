@@ -64,9 +64,10 @@
             <button type="button" id="purches_btn" class="btn btn-lg btn-block btn-success" onclick="show_purches_form(true)">Purches</button>
             
             <div id="purches_form">
-                <form>
+                <form action = "php_includes/place_order.php" method="POST">
+                    <input type="hidden" name="product_id" value="<?php echo $product["product_id"];?>">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="address" placeholder="Address">
+                        <input type="text" class="form-control" id="address" placeholder="Address" name="address" required>
                     </div>
 
                     <div class="row row-cols-3">
@@ -74,7 +75,7 @@
                             <button type="button" class="btn  btn-block btn-light" onclick="update_quantity(false)"><</button>
                         </div>
                         <div class="col mx-auto">
-                            <input id="quantity" class="form-control" type="text" value="1" readonly >
+                            <input id="quantity" class="form-control" type="text" value="1" readonly name="quantity">
                         </div>
                         <div class="col mx-auto">
                             <button type="button" class="btn  btn-block btn-light" onclick="update_quantity(true)">></button>
@@ -86,7 +87,7 @@
                             <label for="price">Price &#8377;</label>
                         </div>
                         <div class="col">
-                            <input id="price" class="form-control" type="text" value="<?php echo($product["product_price"]);?>" readonly >
+                            <input id="price" class="form-control" type="text" value="<?php echo($product["product_price"]);?>" readonly name="price">
                         </div>
                     </div>
 

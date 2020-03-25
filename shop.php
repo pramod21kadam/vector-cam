@@ -61,9 +61,32 @@
                 }
             ?>
         </div>
+        
+        <?php
+            if($_SESSION["order_success"]){
+                echo '<div id="toast">Order is placed successfully.</div>
+                <script>
+                var x = document.getElementById("toast");
+                x.className = "show";
+                setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+                </script>
+                ';
+                unset($_SESSION["order_success"]);
+            }
+            else if($_SESSION["order_success"] === false){
+                echo '<div id="toast">Something went wrong.</div>';
+            }
+        ?>
+        
+
     </body>
 
     <script>
+        <?php
+            if($_GET["sucess"]){
+                echo('window.alert("your order is placed successfully.");');
+            }
+        ?>
         function learn_more(product){
             window.location.href = "http://127.0.0.1:8080/more_info.php?product_id="+product.id;
         }

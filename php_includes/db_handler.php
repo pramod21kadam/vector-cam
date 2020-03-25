@@ -93,16 +93,25 @@
             return true;
         }
 
-        public function place_order($address){
-            if($address){
-                $payment_id = mysqli_fetch_row($this->conn->query("SELECT payment_id FROM customer where"))[0];
-                $email = $_SESSION["mail_id"];
-                $place_order = "INSERT INTO place_order VALUES('$payment_id', '$email', $address, $payment_id)";
+        // public function place_order($address){
+        //     if($address){
+        //         $payment_id = mysqli_fetch_row($this->conn->query("SELECT payment_id FROM customer where"))[0];
+        //         $email = $_SESSION["mail_id"];
+        //         $place_order = "INSERT INTO place_order VALUES('$payment_id', '$email', $address, $payment_id)";
+        //         return true;
+        //     }
+        //     else{
+        //         return false;
+        //     }
+        // }
+
+        public function place_order($email , $product_id , $address , $quantity , $price){
+            $sql = 'insert into orders(email , product_id , address , quantity , price) values ("'.$email.'" , "'.$product_id.'" , "'.$address.'" , '.$quantity.' , '.$price.');';
+            if($this->conn->query($sql)){
+                $this->conn->commit();
                 return true;
             }
-            else{
-                return false;
-            }
+            return false;
         }
 
         // function deletes cart
