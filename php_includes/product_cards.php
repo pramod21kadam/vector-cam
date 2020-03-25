@@ -1,6 +1,6 @@
 <?php
     echo('<div class="card product_card">
-                <img src="static/images/products/p2.jpg" class="card-img-top" alt="...">
+                <img src="static/images/products/'.$cp["product_id"].'.jpg" class="card-img-top" alt="failed to load image">
                 <div class="card-body">
                     <h2 class="card-title">'.$cp["product_name"].'</h2>
                     <p class="card-text">'.$cp["summary"].'</p>

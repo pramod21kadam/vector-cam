@@ -1,3 +1,16 @@
+body{
+    line-height: 1.5;
+    color: #222;
+    font-family: Rubik,sans-serif;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
 #purches_form{
     display: none;
+}
+
+#quantity , #price{
+    background: #fff;
+    border :none;
+    text-align: center;
 }

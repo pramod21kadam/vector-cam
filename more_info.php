@@ -71,13 +71,22 @@
 
                     <div class="row row-cols-3">
                         <div class="col mx-auto">
-                            <button type="button" class="btn  btn-block btn-light"><</button>
+                            <button type="button" class="btn  btn-block btn-light" onclick="update_quantity(false)"><</button>
                         </div>
                         <div class="col mx-auto">
-                            <input class="form-control" type="text" placeholder="1" readonly>
+                            <input id="quantity" class="form-control" type="text" value="1" readonly >
                         </div>
                         <div class="col mx-auto">
-                            <button type="button" class="btn  btn-block btn-light">></button>
+                            <button type="button" class="btn  btn-block btn-light" onclick="update_quantity(true)">></button>
+                        </div>
+                    </div>
+
+                    <div class="row row-cols-2">
+                        <div class="col">
+                            <label for="price">Price &#8377;</label>
+                        </div>
+                        <div class="col">
+                            <input id="price" class="form-control" type="text" value="<?php echo($product["product_price"]);?>" readonly >
                         </div>
                     </div>
 
@@ -86,7 +95,7 @@
                             <button type="button" class="btn btn-lg btn-block btn-danger" onclick="show_purches_form()" >Close</button>
                         </div>
                         <div class="col">
-                            <button type="submit" class="btn btn-lg btn-block btn-success">Place order</button>
+                            <button type="submit" class="btn btn-lg btn-block btn-success">continue</button>
                         </div>
                     </div>
                 </form>
@@ -128,17 +137,48 @@
             }
 
 
-
-            function show_purches_form(form_visibility){
-                if(form_visibility){
-                    document.getElementById("purches_form").style.display = "block";
-                    document.getElementById("purches_btn").style.display = "none";
+            <?php
+                if($_SESSION["mail_id"]){
+                    echo('function show_purches_form(form_visibility){
+                        if(form_visibility){
+                            document.getElementById("purches_form").style.display = "block";
+                            document.getElementById("purches_btn").style.display = "none";
+                        }
+                        else{
+                            document.getElementById("purches_form").style.display = "none";
+                            document.getElementById("purches_btn").style.display = "block";
+                        }
+                        
+                    }');
                 }
                 else{
-                    document.getElementById("purches_form").style.display = "none";
-                    document.getElementById("purches_btn").style.display = "block";
+                    echo('function show_purches_form(form_visibility){
+                        window.alert("You need to login before purchesing.");
+                    }');
                 }
-                
+            ?>
+            
+
+
+            function update_quantity(inc){
+                var quantity = document.getElementById("quantity");
+                var price = document.getElementById("price");
+                if(inc){
+                    if(++quantity.value > <?php echo $product["product_avilability"]?>){
+                        quantity.value = <?php echo $product["product_avilability"]?>;
+                    }
+                    else{
+                        price.value = parseInt(price.value) + <?php echo($product["product_price"]);?>;
+                    }
+                }
+                else{
+                    if(--quantity.value == 0){
+                        quantity.value = 1;
+                    }
+                    else{
+                        price.value = parseInt(price.value) - <?php echo($product["product_price"]);?>;
+                    }
+                }
             }
             
         </script>
