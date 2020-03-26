@@ -4,8 +4,8 @@
     $db = new db_handler;
     $product = $db->get_product_info($_GET["product_id"]);
 
-    $banner_images =  scandir("static/images/products/p1/");
-    $banner_images_count = count($banner_images)-2;
+    $img_dir =  scandir("static/images/products/p1/");
+    $banner_images = array();
 
 ?>
 <!DOCTYPE html>
@@ -22,23 +22,23 @@
 
     <div id="banner" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li class="indicator active"></li>
             <?php
-                for($i=1 ; $i<$banner_images_count ; $i++){
-                    echo '<li class="indicator"></li>';
+                foreach($img_dir as $image){
+                    if(strncasecmp($image , "banner" , 6) == 0){
+                        echo '<li class="indicator"></li>';
+                        array_push($banner_images , $image);
+                    }
                 }
             ?>
         </ol>
 
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="static/images/products/p1/banner_0.png" class="d-block w-100" alt="...">
-            </div>
             <?php 
-                for($i=1 ; $i<$banner_images_count ; $i++){
+                foreach($banner_images as $image){
                     echo '<div class="carousel-item">
-                                <img src="static/images/products/p1/banner_'.$i.'.png" class="d-block w-100" alt="...">
-                            </div>';
+                        <img src="static/images/products/'.$_GET["product_id"].'/'.$image.'" class="d-block w-100" alt="...">
+                        </div>';
+                    
                 }
             ?>
         </div>
@@ -107,17 +107,20 @@
 
 
 
-
+    <div id="toast">Please sign in your account.</div>
     
     </body>
 
 
     <script>
             var visible_img = 0;
-            
+            var images = document.getElementsByClassName("carousel-item");
+            var indicators = document.getElementsByClassName("indicator");
+                
+            images[visible_img].className += " active";
+            indicators[visible_img].className += " active";
+
             function update_banner(next){
-                var images = document.getElementsByClassName("carousel-item");
-                var indicators = document.getElementsByClassName("indicator");
                 if(next){
                     if(--visible_img<0){
                         visible_img = images.length-1;
@@ -154,7 +157,9 @@
                 }
                 else{
                     echo('function show_purches_form(form_visibility){
-                        window.alert("You need to login before purchesing.");
+                        var x = document.getElementById("toast");
+                        x.className = "show";
+                        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
                     }');
                 }
             ?>

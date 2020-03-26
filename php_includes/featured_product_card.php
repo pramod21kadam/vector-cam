@@ -2,7 +2,7 @@
     echo('<div class="card mb-3 rounded featured_product">
         <div class="row no-gutters">
             <div class="col-sm-4">
-                <img src="static/images/products/'.$fp["product_id"].'.jpg" class="card-img" alt="...">
+                <img src="static/images/products/'.$fp["product_id"].'/'.$fp["product_id"].'.jpg" class="card-img" alt="...">
             </div>
             <div class="col-sm-8">
                 <div class="card-body">

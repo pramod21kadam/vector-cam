@@ -11,7 +11,7 @@
         <li class="nav-item">
             <?php 
                 if(isset($_SESSION["mail_id"])){
-                    echo('<a href="#" class="nav-link">My Account</a>');
+                    echo('<a href="my_account.php" class="nav-link">My Account</a>');
                 }
                 else{
                     echo('<a href="static/login.html" class="nav-link">Login</a>');

@@ -29,7 +29,15 @@
                 return false;
             }
         }
- 
+
+        public function get_account_info($email){
+            $sql = 'select * from customer where email = "'.$email.'";';
+            $result = $this->conn->query($sql);
+            return $result->fetch_assoc();
+        }
+        
+
+        
         public function add_to_cart($product_id, $quantity){
             $product_quantity = (mysqli_fetch_row($this->conn->query("SELECT product_availability FROM product WHERE product_id='$product_id'")))[0];
             if($quantity < $product_quantity ){
@@ -72,8 +80,6 @@
                 }
             }
             else{
-                // quantity is not sufficient in
-                // echo "<script>window.alert('Product count exceeded availability. Please wisely select amount')</script>";
                 return false;
             }
         }
@@ -112,6 +118,17 @@
                 return true;
             }
             return false;
+        }
+
+
+        public function get_orders($email){
+            $sql = 'select * from orders where email = "'.$email.'";';
+            $result = $this->conn->query($sql);
+            $orders = array();
+            while($row = $result->fetch_assoc()){
+                array_push($orders , $row);
+            }
+            return $orders;
         }
 
         // function deletes cart
