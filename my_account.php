@@ -56,15 +56,15 @@
                     <form>
                         <div class="form-group row">
                             <div class="col-sm">
-                                <input type="text" class="form-control" id="f_name" placeholder="First Name" value=<?php echo $account["first_name"]; ?>>
+                                <input type="text" class="form-control" id="f_name" placeholder="First Name" value=<?php echo $account["first_name"]; ?> oninput="display_update()">
                             </div>
                             <div class="col-sm">
-                                <input type="text" class="form-control" id="l_name" placeholder="Last Name" value=<?php echo $account["last_name"]; ?>>
+                                <input type="text" class="form-control" id="l_name" placeholder="Last Name" value=<?php echo $account["last_name"]; ?> oninput="display_update()">
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm">
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" value=<?php echo $account["email"]; ?> >
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" value=<?php echo $account["email"]; ?> oninput="display_update()">
                             </div>
                         </div>
 
@@ -79,8 +79,11 @@
                                 <input type="password" class="form-control" placeholder="confirm password">
                             </div>
                         </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="row">
+                            <div class="col">
+                                <button id="update_btn" type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
 
@@ -92,8 +95,10 @@
 
     <script>
         var confirm_block_visibility = false;
+        var update_visibility = false;
 
         function display_confirm(){
+            display_update();
             var confirm_block = document.getElementById("confirm_block");
             if(!confirm_block_visibility){
                 confirm_block.className += " show";
@@ -105,6 +110,24 @@
                 confirm_block_visibility = false;
                 setTimeout(function(){ confirm_block.className = confirm_block.className.replace(" hide", ""); }, 500);
             }
+        }
+
+        function display_update(){
+            var update_btn = document.getElementById("update_btn");
+            if(!update_visibility){
+                update_btn.className += " show";
+                update_visibility = true;
+            }
+            if(document.getElementById("password").value == <?php echo '"'.$account["password"].'"'; ?> && 
+            document.getElementById("f_name").value == <?php echo '"'.$account["first_name"].'"'; ?> &&
+            document.getElementById("l_name").value == <?php echo '"'.$account["last_name"].'"'; ?> &&
+            document.getElementById("email").value == <?php echo '"'.$account["email"].'"'; ?> 
+            ){
+                update_btn.className = update_btn.className.replace(" show" , " hide");
+                update_visibility = false;
+                setTimeout(function(){ update_btn.className = update_btn.className.replace(" hide", ""); }, 500);
+            }
+
         }
     </script>
 </html>

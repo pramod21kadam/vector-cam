@@ -30,6 +30,21 @@
             }
         }
 
+        public function admin_sign_in($email , $password){
+            $sql = 'select * from admin where email = "'.$email.'" and password = "'.$password.'";';
+            $result = $this->conn->query($sql);
+            if($result->num_rows == 1){
+                return true;
+            }
+            return false;
+        }
+
+        public function get_admin_info($email){
+            $sql = 'select * from admin where email = "'.$email.'";';
+            $result = $this->conn->query($sql);
+            return $result->fetch_assoc();
+        }
+
         public function get_account_info($email){
             $sql = 'select * from customer where email = "'.$email.'";';
             $result = $this->conn->query($sql);

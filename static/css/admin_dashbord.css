@@ -1,0 +1,37 @@
+.hide{
+    display: none;
+}
+
+.show{
+    display:block;
+    animation-name: fade_in;
+    animation-duration: 0.8s;
+}
+
+.action p{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.selected , .action:hover{
+    animation-name: bgfade_in;
+    animation-duration: 0.5s;
+    color: #fff;
+    background-color: #383838;
+    border-radius: 40px;
+}
+
+.action{
+    cursor: pointer;
+}
+
+@keyframes bgfade_in{
+    from {color : #000; background-color: #fff;}
+    to {color: #fff; background-color: #383838;}
+}
+
+
+@keyframes fade_in{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
