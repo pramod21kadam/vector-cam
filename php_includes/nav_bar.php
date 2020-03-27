@@ -10,7 +10,10 @@
         </li>
         <li class="nav-item">
             <?php 
-                if(isset($_SESSION["mail_id"])){
+                if($_SESSION["admin"]){
+                    echo('<a href="admin_dashbord.php" class="nav-link">Dashbord</a>');
+                }
+                else if(isset($_SESSION["mail_id"])){
                     echo('<a href="my_account.php" class="nav-link">My Account</a>');
                 }
                 else{

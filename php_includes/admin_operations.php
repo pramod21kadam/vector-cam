@@ -1,4 +1,9 @@
 <?php
+    session_start();
+    if(!$_SESSION["admin"]){
+        header("location:http://127.0.0.1:8080/index.php");
+        die();
+    }
     require "db_handler.php";
     $db = new db_handler;
 

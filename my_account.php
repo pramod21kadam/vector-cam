@@ -1,9 +1,14 @@
 <?php
     session_start();
+    if(!$_SESSION["admin"]){
+        header("location:http://127.0.0.1:8080/index.php");
+        die();
+    }
     require "php_includes/db_handler.php";
     $db = new db_handler;
     $account = $db->get_account_info($_SESSION["mail_id"]);
     $orders = $db->get_orders($_SESSION["mail_id"]);
+    
 ?>
 
 <!doctype html>

@@ -4,7 +4,7 @@
     $db = new db_handler;
     $product = $db->get_product_info($_GET["product_id"]);
 
-    $img_dir =  scandir("static/images/products/p1/");
+    $img_dir =  scandir("static/images/products/".$_GET["product_id"]."/");
     $banner_images = array();
 
 ?>
