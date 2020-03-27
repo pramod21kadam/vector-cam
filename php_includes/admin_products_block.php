@@ -13,6 +13,10 @@
     <input type="hidden" id="intent" name="intent" >
 </form>
 
+<form action="php_includes/admin_operations.php?action=1" method="POST" id="remove_product">
+    <input type="hidden" id="product_id_rmv" name="product_id" >
+</form>
+
 <form action="" id="product_form">
     <?php
         foreach($featured_products as $p){
@@ -30,6 +34,7 @@
                                     <input type="checkbox" class="custom-control-input" id="'.$p["product_id"].'_featured_toggle" checked oninput="update_fp(this , \''.$p["product_id"].'\')">
                                     <label class="custom-control-label" for="'.$p["product_id"].'_featured_toggle">Featured product</label>
                                 </div>
+                                <button type="button" class="btn btn-outline-danger" onclick="remove_product(\''.$p["product_id"].'\')">Remove</button>
                             </div>
                         </div>
                     </div>
@@ -51,6 +56,7 @@
                                     <input type="checkbox" class="custom-control-input" id="'.$p["product_id"].'_featured_toggle" oninput="update_fp(this , \''.$p["product_id"].'\')">
                                     <label class="custom-control-label" for="'.$p["product_id"].'_featured_toggle">Featured product</label>
                                 </div>
+                                <button type="button" class="btn btn-outline-danger" onclick="remove_product(\''.$p["product_id"].'\')">Remove</button>
                             </div>
                         </div>
                     </div>
@@ -76,4 +82,10 @@
     function add_product(){
         window.location.href = "http://127.0.0.1:8080/static/add_product.html";
     }
+
+    function remove_product(pid){
+        document.getElementById("product_id_rmv").value = pid;
+        document.getElementById("remove_product").submit();
+    }
+
 </script>

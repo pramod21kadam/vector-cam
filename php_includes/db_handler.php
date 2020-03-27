@@ -225,7 +225,15 @@
             return $result->fetch_assoc();
         }
 
-        //add featured product
+        public function add_product($product_id , $product_name , $product_avilability , $product_price , $product_summary){
+            $sql = 'insert into product values("'.$product_id.'" , "'.$product_name.'" , '.$product_price.' , '.$product_avilability.' , "'.$product_summary.'");';
+            if($this->conn->query($sql)){
+                $this->conn->commit();
+                return true;
+            }
+            return false;
+        }
+
         public function add_featured_product($product_id){
             $sql = 'insert into featured_product values("'.$product_id.'");';
             if($this->conn->query($sql)){
@@ -237,6 +245,16 @@
 
         public function remove_featured_product($product_id){
             $sql = 'delete from featured_product where product_id = "'.$product_id.'";';
+            if($this->conn->query($sql)){
+                $this->conn->commit();
+                return true;
+            }
+            return flase;
+        }
+
+        public function remove_product($product_id){
+            $this->remove_featured_product($product_id);
+            $sql = 'delete from product where product_id = "'.$product_id.'";';
             if($this->conn->query($sql)){
                 $this->conn->commit();
                 return true;
