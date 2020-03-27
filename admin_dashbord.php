@@ -7,9 +7,10 @@
     require "php_includes/db_handler.php";
     $db = new db_handler;
     $account = $db->get_admin_info($_SESSION["mail_id"]);
+    $featured_products = $db->get_featured_products();
+    $products = $db->get_products();
 ?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>Dashbord</title>
@@ -51,7 +52,7 @@
                     </div>
 
                     <div id="products_block" class="block hide">
-                        <h1>products_block</h1>
+                        <?php require "php_includes/admin_products_block.php";?>
                     </div>
 
                     <div id="orders_block" class="block hide">
@@ -74,5 +75,11 @@
             blocks[index].className = blocks[index].className.replace(" hide" , " show");
             actions[index].className += " selected";     
         }
+
+        <?php 
+            if($_GET["action"]){
+                echo 'update_page('.$_GET["action"].');';
+            }
+        ?>
     </script>
 </html>

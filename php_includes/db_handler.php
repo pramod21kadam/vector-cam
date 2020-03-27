@@ -225,6 +225,25 @@
             return $result->fetch_assoc();
         }
 
+        //add featured product
+        public function add_featured_product($product_id){
+            $sql = 'insert into featured_product values("'.$product_id.'");';
+            if($this->conn->query($sql)){
+                $this->conn->commit();
+                return true;
+            }
+            return false;
+        }
+
+        public function remove_featured_product($product_id){
+            $sql = 'delete from featured_product where product_id = "'.$product_id.'";';
+            if($this->conn->query($sql)){
+                $this->conn->commit();
+                return true;
+            }
+            return flase;
+        }
+
 
         private function check_cart(){
             $email = $_SESSION["mail_id"];
