@@ -30,6 +30,12 @@
             }
         }
 
+        public function count_accounts(){
+            $sql = 'select count(*) from customer;';
+            $result = $this->conn->query($sql);
+            return $result->fetch_array()[0];
+        }
+
         public function admin_sign_in($email , $password){
             $sql = 'select * from admin where email = "'.$email.'" and password = "'.$password.'";';
             $result = $this->conn->query($sql);
@@ -127,12 +133,18 @@
         // }
 
         public function place_order($email , $product_id , $address , $quantity , $price){
-            $sql = 'insert into orders(email , product_id , address , quantity , price) values ("'.$email.'" , "'.$product_id.'" , "'.$address.'" , '.$quantity.' , '.$price.');';
+            $sql = 'insert into orders(email , product_id , address , quantity , price , placed_date) values ("'.$email.'" , "'.$product_id.'" , "'.$address.'" , '.$quantity.' , '.$price.', "'.date("Y-m-d").'");';
             if($this->conn->query($sql)){
                 $this->conn->commit();
                 return true;
             }
             return false;
+        }
+
+        public function sum_transactions(){
+            $sql = 'select sum(amount) from transaction where transaction_date > "'.date("Y-m").'-00";';
+            $result = $this->conn->query($sql);
+            return $result->fetch_array()[0];
         }
 
 
@@ -223,6 +235,12 @@
             $sql = "select * from product where product_id = '".$product_id."'";
             $result = $this->conn->query($sql);
             return $result->fetch_assoc();
+        }
+
+        public function count_products(){
+            $sql = 'select count(*) from product;';
+            $result = $this->conn->query($sql);
+            return $result->fetch_array()[0];
         }
 
         public function add_product($product_id , $product_name , $product_avilability , $product_price , $product_summary){

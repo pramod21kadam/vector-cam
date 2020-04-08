@@ -1,0 +1,67 @@
+body{
+    font-size: medium;
+}
+.index-banner{
+    margin: 0px;
+    text-align: center;
+    color: white;
+    height: 800px;  
+    background-image: url("../images/index-banner-test.jpg");  
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.index-banner-content{
+    margin-top: 200px;
+    max-width: 600px;
+    animation: 1s ease-out 0s 1 slidein;
+}
+
+@keyframes slidein {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+#index-banner-text{
+    text-align: justify;
+    margin-top: 40px;
+    background-color: rgba(219, 118, 23, 0.753);
+    padding: 25px;
+    font-weight: bold;
+}
+
+.index-banner-buttons{
+    margin-top: 40px;
+}
+.banner-button{
+    width: 245px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    background-color: rgb(42, 41, 41);
+    color: white;
+
+    border-style: solid;
+    border-radius: 8px;
+    border-color: rgba(219, 118, 23, 0.753);
+    transition: ease-in-out;
+    transition-property: all;
+    transition-duration: 0.3s;
+
+}
+.banner-button:hover{
+    background-color: rgb(219, 118, 23 , 0.753);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.banner-button:active{
+    transform: scale(0.9);
+}

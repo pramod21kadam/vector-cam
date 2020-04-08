@@ -9,6 +9,7 @@
 
     switch($_GET["action"]){
         case 0:
+            // promoting or demoting product as featured product.
             if($_POST["product_id"]){
                 if($_POST["intent"] == "true"){
                     if($db->add_featured_product($_POST["product_id"])){
@@ -27,6 +28,7 @@
 
 
         case 1:
+            // removing product
             if($db->remove_product($_POST["product_id"])){
                 unlink("../static/descriptions/".$_POST["product_id"].".txt");
                 unlink("../static/images/products/".$_POST["product_id"]."/".$_POST["product_id"].".jpg");
@@ -45,6 +47,7 @@
 
 
         case 2:
+            // adding product
             $result = $db->add_product($_POST["product_id"] , $_POST["product_name"] , $_POST["product_price"] , $_POST["product_avilability"] , $_POST["product_summary"]);
             if(!$result){
                 header("location:http://127.0.0.1:8080/admin_dashbord.php?action=1");

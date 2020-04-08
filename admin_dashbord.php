@@ -23,7 +23,7 @@
         <?php
             require "php_includes/nav_bar.php";
         ?>   
-        <div>
+        <div id="container">
             <div class="row">
                 <div class="col-3" id="action_menu" style="text-align:left;">
                     <div class="row action selected" onclick="update_page(0)">
@@ -48,7 +48,7 @@
                 <div class="col">
 
                     <div id="overview_block" class="block show">
-                        <h1>overview_block</h1>
+                        <?php require "php_includes/admin_overview_block.php";?>
                     </div>
 
                     <div id="products_block" class="block hide">
@@ -56,7 +56,7 @@
                     </div>
 
                     <div id="orders_block" class="block hide">
-                        <h1>orders_block</h1>
+                        <?php require "php_includes/admin_orders_block.php";?>
                     </div>
                 </div>
             </div>

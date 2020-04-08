@@ -1,9 +1,12 @@
 .hide{
     display: none;
 }
-
+#container{
+    padding-right: 2%;
+}
 #action_menu{
     max-width: 300px;
+    height: 100vh;
 }
 
 .show{
