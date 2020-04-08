@@ -1,12 +1,17 @@
 body{
     font-size: medium;
 }
+
+.hidden{
+    display: none;
+}
+
 .index-banner{
     margin: 0px;
     text-align: center;
     color: white;
     height: 800px;  
-    background-image: url("../images/index-banner-test.jpg");  
+    background-image: url("../images/index-banner-test-lq.jpg");  
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -17,15 +22,19 @@ body{
     margin-top: 200px;
     max-width: 600px;
     animation: 1s ease-out 0s 1 slidein;
+    /* animation-delay: 0.5s; */
 }
 
 @keyframes slidein {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+    0%{
+        display: none;
+        opacity: 0%;
+        transform: translateY(50%);
+    }
+    100%{
+        opacity: 100%;
+        transform: translateX(0);
+    }
 }
 
 

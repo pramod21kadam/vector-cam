@@ -10,12 +10,12 @@
         <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="static/css/index.css">
     </head>
-    <body>
+    <body class="hidden" >
         <?php require"php_includes/nav_bar.php" ?>
 
         <div class="row index-banner">
 
-            <div class="col index-banner-content mx-auto"> 
+            <div class="col index-banner-content mx-auto hidden"> 
                 <div id="index-banner-heading">
                     <h1>VectorCam</h1>
                     <h3>Take back your privacy.</h3>
@@ -42,7 +42,6 @@
         </div>
 
         <div class="index-learn-more">
-
             <div class="row">
                 <div class="col">
 
@@ -55,4 +54,28 @@
         </div>
     </body>
 
+
+
+    <script>
+        // function to wait till page lodes 
+        ready();
+        function ready(fn) {
+            if (document.readyState != 'loading'){
+                show_body();
+            } 
+            else {
+                document.addEventListener('DOMContentLoaded', show_body);
+            }
+        }
+
+        function show_body(){
+            document.getElementsByTagName("body")[0].className = "";
+            
+            setTimeout(() => {  
+            var banner_content = document.getElementsByClassName("index-banner-content")[0];
+            banner_content.className = banner_content.className.replace(" hidden" , "");
+                }, 500); 
+        }
+
+    </script>
 </html>
