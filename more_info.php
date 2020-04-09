@@ -14,6 +14,7 @@
         <title><?php echo $product["product_name"]; ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/main.css">
         <link rel="stylesheet" href="static/css/more_info.css">
     </head>
 
