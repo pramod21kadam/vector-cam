@@ -2,18 +2,60 @@ body{
     font-size: medium;
 }
 
-/* navbar */
-.navbar-custom{
-    background-color: transparent;
-    font-weight: bolder;
-    animation: 2s ease-out 0s 1 slidein-top-bottom;
-    height: 100px;
-    width: 100%;
-    position: fixed;
-
+hr{
+    border-width: 4px;
+    margin-top: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
-.navbar-custom .nav-link , .navbar-custom .navbar-brand{
+/* specific animations */
+@keyframes transperant-sb{
+    0%{
+        background-color: transparent;
+    }
+    100%{
+        background-color: rgba(219, 118, 23, 1);
+    }
+}
+
+@keyframes sb-transperant{
+    0%{        
+        background-color: rgba(219, 118, 23, 1);
+    }
+    100%{
+        background-color: transparent;
+    }
+}
+
+
+
+/* navbar */
+.navbar-custom , .navbar-custom-sb{
+    font-weight: bolder;
+    height: 70px;
+    width: 100%;
+    position: fixed;
+}
+
+.navbar-animate-slidein{
+    animation: 2s ease-out 0s 1 slidein-top-bottom;
+}
+
+.navbar-custom{
+    background-color: transparent;
+}
+
+.navbar-custom:not(.navbar-animate-slidein){
+    animation: 1s ease-out 0s 1 sb-transperant;
+}
+
+.navbar-custom-sb{
+    animation: 1s ease-in-out 0s 1 transperant-sb;
+    background-color: rgba(219, 118, 23, 1);
+}
+
+.navbar-custom .nav-link , .navbar-custom .navbar-brand , .navbar-custom-sb .nav-link , .navbar-custom-sb .navbar-brand{
     color: white;
     transition: ease-in-out;
     transition-duration: 0.3s;
@@ -22,6 +64,9 @@ body{
 .navbar-custom .nav-link:hover{
     color: rgba(219, 118, 23, 0.953);
     background-color: rgba(0, 0, 0, 0.431);
+}
+.navbar-custom-sb .nav-link:hover{
+    color: rgba(0, 0, 0);
 }
 
 /* banner */
@@ -55,6 +100,7 @@ body{
 .index-banner-buttons{
     margin-top: 40px;
 }
+
 .banner-button{
     width: 245px;
     padding-top: 13px;
@@ -80,6 +126,43 @@ body{
     transform: scale(0.9);
 }
 
-.index-learn-more{
-    height: 800px;
+/* learn more */
+.index-learn-more .row{
+    margin-top: 100px;
+    margin-bottom: 120px;
+    padding-left: 4%;
+    padding-right: 4%;
 }
+
+.img-col-right , .img-col-left , .desc-col-right , .desc-col-left{
+    max-width: 600px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.desc-col-right , .desc-col-left{
+    padding-top: 40px;
+    font-size: large;
+    vertical-align: middle;
+}
+
+.desc-col-right , .img-col-right{
+    opacity: 0;
+    animation: 1s ease-out 0.5s 1 slidein-right-left;
+    animation-fill-mode: forwards;
+    text-align: left;
+}
+
+.desc-col-left , .img-col-left{
+    opacity: 0;
+    animation: 1s ease-out 0.5s 1 slidein-left-right;
+    animation-fill-mode: forwards;
+    text-align: right;
+}
+
+.lm-img{
+    max-width: 600px;
+    border-radius: 50px;
+}
+
+

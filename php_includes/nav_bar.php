@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top navbar-custom">
+<nav class="navbar sticky-top navbar-custom navbar-animate-slidein" id="nav-bar">
     <a class="navbar-brand justify-content-start" href="index.php">VectorCam</a>
 
     <ul class="nav justify-content-end">
