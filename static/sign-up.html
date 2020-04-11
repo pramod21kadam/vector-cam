@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign up-VectorCam</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/login.css">
+    </head>
+
+    <body>
+        <div class="mx-auto" id="sign-in-card">
+            <div class="center" id="card-heading">
+                <h3>VectorCam</h3>
+                <h4>Create account</h4>
+            </div>
+
+            <form action="../php_includes/authenticate.php" method="POST" id="sign-in-form">
+                <input type="hidden" value="sign_up" name="intent">
+
+                <div class="row">
+                    <div class="col custom-form-input">
+                        <input type="text" class="custom-input" id="f_name" name="f_name" autocomplete="off" required>
+                        <label for="f_name" class="custom-input-lbl">
+                            <span class="custom-lbl-name">First name</span>
+                        </label>
+                    </div>
+                    
+                    <div class="col custom-form-input">
+                        <input type="text" class="custom-input" id="l_name" name="l_name" autocomplete="off" required>
+                        <label for="l_name" class="custom-input-lbl">
+                            <span class="custom-lbl-name">Last name</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="custom-form-input">
+                    <input type="email" class="custom-input" id="email" name="email" autocomplete="off" required>
+                    <label for="email" class="custom-input-lbl">
+                        <span class="custom-lbl-name">Email</span>
+                    </label>
+                </div>
+
+                <div class="custom-form-input">
+                    <input type="password" class="custom-input" id="password" name="password" autocomplete="off" required>
+                    <label for="password" class="custom-input-lbl">
+                        <span class="custom-lbl-name">password</span>
+                    </label>
+                </div>
+
+                <div class="row" id="sign-in-submit">
+                    <div class="col" id="sign-up-link">
+                        <a href="sign-in.html">already have account</a>
+                    </div>
+                    <div class="col" id="sign-in-btn">
+                        <input type="submit" class="custom-btn" value="submit">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </body>
+
+</html>

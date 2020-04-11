@@ -8,18 +8,32 @@
         <li class="nav-item hvr-underline-from-center">
             <a class="nav-link" href="static/about.html">About</a>
         </li>
-        <li class="nav-item hvr-underline-from-center">
-            <?php 
-                if($_SESSION["admin"]){
-                    echo('<a href="admin_dashbord.php" class="nav-link">Dashbord</a>');
-                }
-                else if(isset($_SESSION["mail_id"])){
-                    echo('<a href="my_account.php" class="nav-link">My Account</a>');
-                }
-                else{
-                    echo('<a href="static/login.html" class="nav-link">Login</a>');
-                }
-            ?>
-        </li>
+        
+        <?php 
+            if($_SESSION["admin"]){
+                echo('<li class="nav-item hvr-underline-from-center">
+                        <a href="admin_dashbord.php" class="nav-link">Dashbord</a>
+                    </li>');
+
+                echo('<li class="nav-item hvr-underline-from-center">
+                        <a href="php_includes/logout.php" class="nav-link">Log out</a>
+                    </li>');
+            }
+            else if(isset($_SESSION["email"])){
+                echo('<li class="nav-item hvr-underline-from-center">
+                        <a href="my_account.php" class="nav-link">My Account</a>
+                    </li>');
+                
+                echo('<li class="nav-item hvr-underline-from-center">
+                        <a href="php_includes/logout.php" class="nav-link">Log out</a>
+                    </li>');
+            }
+            else{
+                echo('<li class="nav-item hvr-underline-from-center">
+                        <a href="static/sign-in.html" class="nav-link">Login</a>
+                    </li>');
+            }
+        ?>
+        
     </ul>
 </nav>
