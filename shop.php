@@ -2,9 +2,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>VectorCam-Shop</title>
+        <title>Shop</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/main.css">
         <link rel="stylesheet" href="static/css/shop.css">
     </head>
 
@@ -15,82 +17,102 @@
             $db = new db_handler;
             $featured_product = $db->get_featured_products();
             $products = $db->get_products();
-        ?>
-        
-        <h1>Products</h1>
-        <div id = "store_products" class="mx-auto">
-            <?php
-                foreach($featured_product as $fp){
-                    require "php_includes/featured_product_card.php";
-                }
-                echo("<hr>");
-                $len = count($products);
-                if($len%3 == 0){
-                    for($i = 0; $i <= $len-3 ; $i += 3){
-                        echo('<div class="card-deck mx-auto">');
-                        $cp = $products[$i];
-                        require "php_includes/product_cards.php";
-                        $cp = $products[$i+1];
-                        require "php_includes/product_cards.php";
-                        $cp = $products[$i+2];
-                        require "php_includes/product_cards.php";
-                        echo('</div>');
+            $product_count = count($products);
+        ?> 
+
+        <main>
+            <section class="featured-section">
+                <h1>Products</h1>
+
+                <?php
+                    foreach($featured_product as $fp){
+                        echo(
+                            '<div class="featured-product">
+                            <div class="product-image">
+                                <img src="static/images/products/'.$fp["product_id"].'/'.$fp["product_id"].'.jpg" alt="">
+                            </div>
+                            <div class="product-details">
+                                <h3>'.$fp["product_name"].'</h3>
+                                <p>'.$fp["summary"].'</p>
+                                <button id='.$fp["product_id"].' onclick="purchase(this)">Purchase</button>
+                            </div>
+                        </div>'                            
+                        );
                     }
+                ?>
+
+            </section>
+            
+            <section class="accessories-section">
+                <?php
+                if($product_count>0){
+                    echo('
+                    <hr>
+                    <h1>Accessories</h1>
+                    ');
                 }
-                else if($len%2 == 0){
-                    for($i = 0; $i <= $len-2 ; $i += 2){
-                        echo('<div class="card-deck mx-auto">');
-                        $cp = $products[$i];
-                        require "php_includes/product_cards.php";
-                        $cp = $products[$i+1];
-                        require "php_includes/product_cards.php";
-                        echo('</div>');
+                ?>
+                
+                
+                <?php
+                    $beg = 0;
+                    if($product_count%2 != 0){
+                        $fp = $products[0];
+                        $beg = 1;
+                        echo(
+                            '<div class="featured-product">
+                            <div class="product-image">
+                                <img src="static/images/products/'.$fp["product_id"].'/'.$fp["product_id"].'.jpg" alt="">
+                            </div>
+                            <div class="product-details">
+                                <h3>'.$fp["product_name"].'</h3>
+                                <p>'.$fp["summary"].'</p>
+                                <button id='.$fp["product_id"].' onclick="purchase(this)">Purchase</button>
+                            </div>
+                        </div>'                            
+                        );
                     }
-                }
-                else{
-                    $fp = $products[0];
-                    require "php_includes/featured_product_card.php";
-                    for($i = 1; $i <= $len-2 ; $i += 2){
-                        echo('<div class="card-deck mx-auto">');
+                    for($i = $beg; $i < $product_count; $i+=2){
                         $cp = $products[$i];
-                        require "php_includes/product_cards.php";
+                        echo('
+                            <div class="accessories-row">
+                            <div class="accessories-product">
+                                <div class="product-image">
+                                    <img src="static/images/products/'.$cp["product_id"].'/'.$cp["product_id"].'.jpg" alt="">
+                                </div>
+                                <div class="product-details">
+                                    <h3>'.$cp["product_name"].'</h3>
+                                    <p>'.$cp["summary"].'</p>
+                                    <button id='.$cp["product_id"].' onclick="purchase(this)">Purchase</button>
+                                    </div>
+                            </div>
+                        ');
                         $cp = $products[$i+1];
-                        require "php_includes/product_cards.php";
-                        echo('</div>');
+                        echo('
+                            <div class="accessories-product">
+                                <div class="product-image">
+                                    <img src="static/images/products/'.$cp["product_id"].'/'.$cp["product_id"].'.jpg" alt="">
+                                </div>
+                                <div class="product-details">
+                                    <h3>'.$cp["product_name"].'</h3>
+                                    <p>'.$cp["summary"].'</p>
+                                    <button id='.$cp["product_id"].' onclick="purchase(this)">Purchase</button>
+                                    </div>
+                            </div>
+                        </div>
+                        ');
                     }
-                }
-            ?>
-        </div>
-        
-        <?php
-            if($_SESSION["order_success"]){
-                echo '<div id="toast">Order is placed successfully.</div>
-                <script>
-                var x = document.getElementById("toast");
-                x.className = "show";
-                setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-                </script>
-                ';
-                unset($_SESSION["order_success"]);
-            }
-            else if($_SESSION["order_success"] === false){
-                echo '<div id="toast">Something went wrong.</div>';
-            }
-        ?>
-        
+                ?> 
+            </section>
+
+        </main>
 
     </body>
 
     <script>
-        <?php
-            if($_GET["sucess"]){
-                echo('window.alert("your order is placed successfully.");');
-            }
-        ?>
-        function learn_more(product){
+        function purchase(product){
             window.location.href = "http://127.0.0.1:8080/more_info.php?product_id="+product.id;
         }
     </script>
-
 
 </html>

@@ -9,6 +9,7 @@
         <title>VectorCam</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="static/css/main.css">
         <link rel="stylesheet" href="static/css/index.css">
     </head>
@@ -98,6 +99,18 @@
                 </div>
             </div>
 
+            <div class="row" id="toolkit-desc">
+                <div class="col desc-col-left">
+                    <h3>Hardware</h3>
+                    <p>
+                        12 Megapixel camera which comes along with nigh vision,
+                        wifi connectivity, Amazon echo and Google home compactible.
+                    </p>
+                </div>
+                <div class="col img-col-right">
+                    <img class="lm-img" src="static/images/hwd.jpg" alt="">
+                </div>
+            </div>
 
         </div>
     </body>

@@ -1,6 +1,14 @@
 /* tags */
-html{
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
     scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+button{
+    font-family: 'Poppins', sans-serif;
 }
 /* states */
 .hidden{
@@ -148,9 +156,8 @@ html{
     border-bottom: 4px solid rgb(219, 118, 23 , 1);
     transform: translateX(-100%);
     transition: ease-in-out 0.3s;
-    
-    
 }
+
 .custom-lbl-name{
     position: absolute;
     color: rgba(77, 77, 77, 0.808);

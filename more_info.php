@@ -143,7 +143,7 @@
 
 
             <?php
-                if($_SESSION["mail_id"]){
+                if($_SESSION["email"]){
                     echo('function show_purches_form(form_visibility){
                         if(form_visibility){
                             document.getElementById("purches_form").style.display = "block";
