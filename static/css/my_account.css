@@ -1,27 +1,9 @@
-.orders{
-    box-shadow:  0 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
-    transition: box-shadow 100ms ease-in-out;
-    transition-property: box-shadow,transform,-webkit-transform;
-    cursor: pointer;
-    padding-top: 2%; 
-    padding-bottom: 2%;
-}
-.orders:hover{
-    box-shadow: 0 0 10px 0 rgba(0,0,0,.25);;
-    transform: scale(1.015);
-}
-
-.custom-input-lbl::after{
-    border-bottom: 4px solid rgb(219, 118, 23 , 0.3);
-}
-
 /* navbar */
 .navbar-custom {
     font-weight: bolder;
     height: 70px;
     width: 100%;
-    animation: 1s ease-in-out 0s 1 transperant-sb;
-    background-color: rgba(219, 118, 23, 1);
+    background-color: white;
 }
 
 .navbar-animate-slidein{
@@ -29,7 +11,8 @@
 }
 
 .navbar-custom .nav-link , .navbar-custom .navbar-brand{
-    color: white;
+    font-weight: bold;
+    color: black;
     transition: ease-in-out;
     transition-duration: 0.3s;
 }
@@ -38,47 +21,108 @@
     color: rgba(0, 0, 0);
 }
 
-#page-content{
-    margin-top: 60px;
+main{
+    display: flex;
+    margin: 30px 15px auto 15px;
 }
 
+/* account section */
+#account-section{
+    flex: 1;
+    margin: 30px auto 30px auto;
+    animation: slidein-left-right 1s;
+}
+#account-section h1{
+    font-weight: 600;
+    font-size: 2rem;
+}
+#account-section p{
+    font-weight: 300;
+    font-size: 1.3rem;
+}
+
+/* orders */
 #orders-section{
-    margin-right: 100px;
+    animation: slidein-right-left 1s;
+    flex: 2;
 }
 
-#account-info{
-    max-width: 700px;
-    overflow: hidden;
-}
-#form-container form{
-    background: white;
-    animation: slidein-left-right 0.5s;
+#orders-section h1{
+    font-weight: 600;
+    font-size: 2rem;
+    margin: 30px auto 30px auto;
+    text-align: center;
 }
 
-#account-content{
-    margin-left: 10px;
-}
-#account-content h5{
-    font-size: 1.25rem;
-}  
-
-button{
-    background-color: transparent;
-    width: 160px;
-    margin-top: 20px;
-    padding: 10px;
-    border: 2px solid rgba(219, 118, 23, 1);
-    color: rgba(219, 118, 23, 1);
+.order{
+    max-width: 1060px;
+    margin: 30px auto 30px auto;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(71, 71, 71, 0.287);
     border-radius: 5px;
+    padding: 20px;
     transition: ease 0.3s;
-    margin-right: 20px;
 }
 
-button:hover{
-    background-color: rgba(219, 118, 23, 1);
+.order:hover{
+    transform: scale(1.07);
+}
+
+.order .order-image{
+    height: 20vw;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.order .order-image img{
+    width: 60%;
+    margin: auto;
+}
+
+.order .order-details{
+    flex: 1;
+}
+
+.order-details h3{
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.order-details p{
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+.order-details button{
+    width: 160px;
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid rgba(219, 118, 23, 0.953);
+    border-radius: 5px;
+    color: rgba(219, 118, 23, 0.953);
+    transition: ease-in 0.3s;
+}
+
+.order-details button:hover{
+    background-color: rgba(219, 118, 23, 0.953);
     color: white;
 }
-
-#edit-btn:active{
-    animation: fade-out 0.5s;
+.order-details button:active{
+    transform: scale(0.9);
 }
+
+#back-to-top{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background-color: lightsalmon;
+    border-radius: 100%;
+}
+
+/* #back-to-top{
+    position: sticky;
+} */
