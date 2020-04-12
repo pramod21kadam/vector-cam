@@ -111,7 +111,7 @@
 
     <script>
         function purchase(product){
-            window.location.href = "http://127.0.0.1:8080/more_info.php?product_id="+product.id;
+            window.location.href = "http://127.0.0.1:8080/purchase.php?product_id="+product.id;
         }
     </script>
 

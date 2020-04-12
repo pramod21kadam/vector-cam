@@ -35,7 +35,8 @@ hr{
 }
 
 .navbar-animate-slidein{
-    animation: 2s ease-out 0s 1 slidein-top-bottom;
+    opacity: 0;
+    animation: 1s ease-out 1s 1 slidein-top-bottom forwards;
 }
 
 .navbar-custom{
@@ -81,7 +82,8 @@ hr{
 .index-banner-content{
     margin-top: 200px;
     max-width: 600px;
-    animation: 1s ease-out 0s 1 slidein-bottom-top;
+    opacity: 0;
+    animation: 1s ease-out 0.3s 1 slidein-bottom-top forwards;
 }
 
 
