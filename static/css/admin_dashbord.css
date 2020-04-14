@@ -1,66 +1,203 @@
-.hide{
+/* navbar */
+.navbar-custom {
+    font-weight: bolder;
+    height: 70px;
+    width: 100%;
+    background-color: white;
+}
+
+.navbar-animate-slidein{
+    animation: 1s ease-out 0s 1 slidein-top-bottom;
+}
+
+.navbar-custom .nav-link , .navbar-custom .navbar-brand{
+    font-weight: bold;
+    color: black;
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.navbar-custom .nav-link:hover{
+    color: rgba(0, 0, 0);
+}
+
+/*  */
+main{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+}
+.side-bar{
+    flex: 1;
+    height: 100%;
+    position: sticky;
+}
+.side-bar-item{
+    padding: 20px auto 20px auto;
+    height: 70px;
+    transition: ease-in-out 0.3s;
+    position: relative;
+    cursor: pointer;
+}
+
+.side-bar-item:hover{
+    background-color: rgba(116, 116, 116, 0.253);
+}
+
+.active-side-bar-item , .active-side-bar-item:hover{
+    background-color: rgba(219, 118, 23, 0.253);
+    color: rgba(219, 118, 23, 1);
+}
+
+.side-bar-item p{
+    font-size: 1.4rem;
+    font-weight: 300;
+    padding: 20px;
+}
+
+.page-container{
+    flex: 4;
+    height: 100%;
+    animation: fade-in 1s;
+}
+
+
+#overview.hidden{
     display: none;
 }
-#container{
-    padding-right: 2%;
-}
-#action_menu{
-    max-width: 300px;
-    height: 100vh;
+#overview{
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.show{
-    display:block;
-    animation-name: fade_in;
-    animation-duration: 0.8s;
+.overview-content{
+    flex: 1;
+    height: 300px;
+    width: 400px;
+    margin: 15px;
+    text-align: center;
+    padding: 30px;
+    border: 1px solid rgba(71, 71, 71, 0.287);
+    border-radius: 5px;
+    transition: ease-in-out 0.3s;
+    background-color: white;
 }
 
-.action p{
-    margin-top: 8px;
-    margin-bottom: 8px;
+.overview-content:hover{
+    transform: scale(1.1);
 }
 
-.selected , .action:hover{
-    animation-name: bgfade_in;
-    animation-duration: 0.5s;
-    color: #fff;
-    background-color: #383838;
-    /* border-radius: 40px; */
+.overview-content h1{
+    font-size: 3rem;
+    font-weight: 500;
 }
 
-.action{
-    cursor: pointer;
+.overview-content p{
+    padding-top: 20px;
+    font-size: 2rem;
+    font-weight: 300;
 }
 
-@keyframes bgfade_in{
-    from {color : #000; background-color: #fff;}
-    to {color: #fff; background-color: #383838;}
+/* products section */
+#products.hidden{
+    display: none;
 }
 
 
-@keyframes fade_in{
-    from {opacity: 0;}
-    to {opacity: 1;}
+.products-content{
+    margin: 15px;
+    animation: slidein-right-left 1s;
 }
+
+.products-content h1{
+    font-size: 3rem;
+    font-weight: 300;
+    margin: 0px auto auto 30px;
+}
+
 
 .product{
-    box-shadow:  0 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
-    transition: box-shadow 100ms ease-in-out;
-    transition-property: box-shadow,transform,-webkit-transform;
-    cursor: pointer;
-    padding-top: 2%; 
-    padding-bottom: 2%;
-    max-width: 1000px;
+    background-color: white;
+    max-width: 1300px;
+    margin: 30px auto 30px auto;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(71, 71, 71, 0.287);
+    border-radius: 5px;
+    padding: 20px;
+    transition: ease 0.3s;
+}
+.product.hidden{
+    display: none;
 }
 .product:hover{
-    box-shadow: 0 0 10px 0 rgba(0,0,0,.25);;
-    transform: scale(1.015);
+    transform: scale(1.05);
 }
 
-.block{
-    padding: 2%;
+.product .product-image{
+    height: 20vw;
+    display: flex;
+    align-items: center;
+    flex: 1;
 }
-#product_blk_info{
-    max-width: 1000px;
-    padding: 16px;
+
+.product .product-image img{
+    width: 60%;
+    margin: auto;
+}
+
+.product .product-details{
+    flex: 1;
+}
+
+.product-details h3{
+    font-weight: 500;
+    font-size: 1.8rem;
+}
+
+.product-details p{
+    font-weight: 300px;
+    font-size: 1.3rem;
+}
+
+.product-details button{
+    width: 160px;
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid rgba(219, 52, 23, 0.953);
+    border-radius: 5px;
+    color: rgba(219, 52, 23, 0.953);
+    transition: ease-in 0.3s;
+}
+
+.product-details button:hover{
+    background-color: rgba(219, 52, 23, 0.953);
+    color: white;
+}
+.product-details button:active{
+    transform: scale(0.9);
+}
+
+#top{
+    position: absolute;
+    top: 0;
+}
+
+#add-product-btn{
+    bottom: 115px;
+}
+#add-product-btn::after{
+    content: "Add product";
+    width: 100px;
+    height: 100px;
+}
+
+#back-to-top::after{
+    content: "Up";
+    width: 40px;
+}
+
+#orders{
+    background-color: lightgreen;
 }

@@ -64,7 +64,9 @@ main{
     padding: 20px;
     transition: ease 0.3s;
 }
-
+.order.hidden{
+    display: none;
+}
 .order:hover{
     transform: scale(1.07);
 }
@@ -113,16 +115,12 @@ main{
     transform: scale(0.9);
 }
 
-#back-to-top{
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 70px;
-    height: 70px;
-    background-color: lightsalmon;
-    border-radius: 100%;
+#top{
+    position: absolute;
+    top: 0;
 }
 
-/* #back-to-top{
-    position: sticky;
-} */
+#back-to-top::after{
+    content: "Up";
+    width: 40px;
+}

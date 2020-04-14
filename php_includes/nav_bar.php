@@ -5,9 +5,9 @@
         <li class="nav-item hvr-underline-from-center">
             <a class="nav-link active" href="shop.php">Shop</a>
         </li>
-        <li class="nav-item hvr-underline-from-center">
+        <!-- <li class="nav-item hvr-underline-from-center">
             <a class="nav-link" href="static/about.html">About</a>
-        </li>
+        </li> -->
         
         <?php 
             if($_SESSION["admin"]){

@@ -23,7 +23,7 @@
 
     <body>
         <?php require "php_includes/nav_bar.php"; ?>
-        
+        <div id="top"></div>
         <main>
             <section id="account-section">
                 <?php
@@ -43,13 +43,14 @@
                         ');
                     }
                     foreach($orders as $order){
+                        $product = $db->get_product_info($order["product_id"]);
                         echo('
-                            <div class="order">
+                            <div class="order" id="card-'.$order["order_id"].'">
                                 <div class="order-image">
                                     <img src="static/images/products/'.$order["product_id"].'/'.$order["product_id"].'.jpg" alt="">
                                 </div>
                                 <div class="order-details">
-                                    <h3>VectorCam</h3>
+                                    <h3>'.$product["product_name"].'</h3>
 
                                     <p> '.$order["address"].'
                                         <br>
@@ -57,7 +58,7 @@
                                         <br>
                                         <b>'.$order["price"].' &#8377;</b>
                                     </p>
-                                    <button>Cancle</button>
+                                    <button id="'.$order["order_id"].'" onclick="cancle_order(this)">Cancle</button>
                                 </div>
                             </div>
                         ');
@@ -65,11 +66,43 @@
                 ?>
                
             </section>
-            <a id="back-to-top" href="#account-section"></a>
+            <div class="fab-btn" id="back-to-top">
+                <div class="fab-btn-content">
+                    <a href="#top">^</a>
+                </div>
+            </div>
            
         </main>
+        <div class="toast hidden" id="success-toast"><p>Successful</p></div>
+        <div class="toast hidden" id="fail-toast"><p>Failed</p></div>
         
     </body>
+
+    <script>
+        var sucess_toast = document.querySelector("#success-toast");
+        var fail_toast = document.querySelector("#fail-toast");
+
+        function cancle_order(oid){
+            document.querySelector("#card-"+oid.id).classList.add("hidden");
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if(this.responseText){
+                        toast = sucess_toast;
+                    }
+                    else{
+                        toast = fail_toast;                    
+                    }
+                    toast.classList.remove("hidden");
+                    setTimeout(function(){ toast.classList.add("hidden"); }, 3000);
+                }
+            };
+            xhttp.open("GET", "php_includes/cancle_order.php?order_id="+oid.id, true);
+            xhttp.send(); 
+        }
+        
+    </script>
     
     
 </html>

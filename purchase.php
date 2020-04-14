@@ -63,12 +63,12 @@
                     <button id="show-form-btn" onclick="toggle_form()">Proceed to payment</button>
 
                     <div class="hidden" id="purchase-form">
-                        <form action = "php_includes/place_order.php" method="POST">
-                            <input type="hidden" name="product_id" value="<?php echo $product["product_id"];?>">
-                            <input type="hidden" name="quantity" value=1>
-                            <input type="hidden" name="price" value=<?php echo $product["product_price"];?>>
-                            <input type="text"   name="address" placeholder="Address">
-                        </form>
+                        <!-- <form> -->
+                            <input id="product_id" type="hidden" name="product_id" value="<?php echo $product["product_id"];?>">
+                            <input id="quantity"   type="hidden" name="quantity" value=1>
+                            <input id="price"      type="hidden" name="price" value=<?php echo $product["product_price"];?>>
+                            <input id="address"    type="text"   name="address" placeholder="Address">
+                        <!-- </form> -->
                         <button id="cancle-btn" onclick="toggle_form()">Cancle</button>
                         <button id="proceed-btn" onclick="place_order()">Proceed</button>
                     </div>
@@ -77,48 +77,9 @@
 
             </section>
         </main>
+        <div class="toast hidden" id="success-toast"><p>Successful</p></div>
+        <div class="toast hidden" id="fail-toast"><p>Failed</p></div>
     </body>
 
-
-
-    <script>
-        var banner_images = document.querySelectorAll(".banner-image");
-        var circles = document.querySelectorAll(".circle");
-        var current_banner_image = 0;
-        banner_images[0].classList.remove("hidden");
-        circles[0].classList.add("circle-active");
-
-        var purchase_form = document.querySelector("#purchase-form");
-        var purchase_btn = document.querySelector("#show-form-btn");
-
-        function banner_update(btn){
-            banner_images[current_banner_image].classList.add("hidden");
-            circles[current_banner_image].classList.remove("circle-active");
-            if(btn.id == "banner-nav-next"){
-                current_banner_image++;
-                if(current_banner_image == banner_images.length){
-                    current_banner_image = 0;
-                }
-            }
-            else{
-                current_banner_image--;
-                if(current_banner_image == -1){
-                    current_banner_image = banner_images.length-1;
-                }
-            }
-            banner_images[current_banner_image].classList.remove("hidden");
-            circles[current_banner_image].classList.add("circle-active");
-        }
-
-        function toggle_form(){
-            purchase_btn.classList.toggle("hidden");
-            purchase_form.classList.toggle("hidden");
-        }
-
-        function place_order(){
-            var form = document.querySelector("#purchase-form form");
-                form.submit();
-            }
-    </script>
-
+    <script src="static/js/purchase.js"></script>
 </html>

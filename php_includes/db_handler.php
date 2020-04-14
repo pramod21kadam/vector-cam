@@ -141,6 +141,12 @@
             return false;
         }
 
+        public function cancle_order($order_id){
+            $sql = 'delete from orders where order_id = "'.$order_id.'";';
+            $this->conn->query($sql);
+            return true;
+        }
+
         public function sum_transactions(){
             $sql = 'select sum(amount) from transaction where transaction_date > "'.date("Y-m").'-00";';
             $result = $this->conn->query($sql);
@@ -262,22 +268,31 @@
         }
 
         public function remove_featured_product($product_id){
+            $sql = 'select * from featured_product where product_id = "'.$product_id.'";';
+            $result = $this->conn->query($sql);
+            if($result->num_rows == 0){
+                return false;
+            }
+
             $sql = 'delete from featured_product where product_id = "'.$product_id.'";';
             if($this->conn->query($sql)){
                 $this->conn->commit();
                 return true;
             }
-            return flase;
+            return false;
         }
 
         public function remove_product($product_id){
-            $this->remove_featured_product($product_id);
+            $fp = $this->remove_featured_product($product_id);
             $sql = 'delete from product where product_id = "'.$product_id.'";';
             if($this->conn->query($sql)){
                 $this->conn->commit();
                 return true;
             }
-            return flase;
+            if($fp == true){
+                $this->add_featured_product($product_id);
+            }
+            return false;
         }
 
 

@@ -29,20 +29,23 @@
 
         case 1:
             // removing product
-            if($db->remove_product($_POST["product_id"])){
-                unlink("../static/descriptions/".$_POST["product_id"].".txt");
-                unlink("../static/images/products/".$_POST["product_id"]."/".$_POST["product_id"].".jpg");
+            $db_opr = $db->remove_product($_GET["product_id"]);
+            if($db_opr){
+                unlink("../static/descriptions/".$_GET["product_id"].".txt");
+                unlink("../static/images/products/".$_GET["product_id"]."/".$_GET["product_id"].".jpg");
                 
-                $img_dir =  scandir("../static/images/products/".$_POST["product_id"]."/");
+                $img_dir =  scandir("../static/images/products/".$_GET["product_id"]."/");
                 foreach($img_dir as $image){
                     if(strncasecmp($image , "banner" , 6) == 0){
-                       unlink("../static/images/products/".$_POST["product_id"]."/".$image);
+                       unlink("../static/images/products/".$_GET["product_id"]."/".$image);
                     }
                 }
-                rmdir("../static/images/products/".$_POST["product_id"]."/");
+                rmdir("../static/images/products/".$_GET["product_id"]."/");
+                echo true;
             }
-            header("location:http://127.0.0.1:8080/admin_dashbord.php?action=1");
-            die();
+            else{
+                echo false;
+            }
         break;
 
 
