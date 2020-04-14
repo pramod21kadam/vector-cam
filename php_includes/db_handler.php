@@ -164,6 +164,16 @@
             return $orders;
         }
 
+        public function get_ordes_email(){
+            $sql = 'select * from orders group by email;';
+            $result = $this->conn->query($sql);
+            $orders = array();
+            while($row = $result->fetch_assoc()){
+                array_push($orders , $row);
+            }
+            return $orders;
+        }
+
         // function deletes cart
         public function delete_cart(){
             $email = $_SESSION["mail_id"];

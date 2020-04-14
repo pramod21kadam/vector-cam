@@ -91,7 +91,64 @@
 
 
             <div class="page-container hidden" id="orders">
+                <p>Orders</p>
+                <?php
+                    $users = $db->get_ordes_email();
+                    foreach($users as $user){
+                        echo('
+                        <div class="order-customer-row">
+                            <p>'.$user["email"].'</p>
+                        ');
 
+                        $orders = $db->get_orders($user["email"]);
+                        foreach($orders as $order){
+                            $product = $db->get_product_info($order["product_id"]);
+                            echo('
+                            <div class="customer-order-row">
+                                <div class="order-row-info">
+                                    <p>
+                                        <b>'.$product["product_id"].'</b> <br>
+                                        '.$order["price"].' &#8377; <br>
+                                        '.$order["placed_date"].'
+                                    </p>
+                                </div>
+                                <div class="order-row-address">
+                                    <p>
+                                        '.$order["address"].'
+                                    </p>
+                                </div>
+                            </div>  
+                            ');
+                        }
+
+                        echo('
+                        </div>
+                        ');
+                    }
+                ?>
+                <!-- <div class="order-customer-row">
+                        <p>onkarkunjir8@gamil.com</p>
+                        <div class="customer-order-row">
+                            <div class="order-row-info">
+                                <p>
+                                    <b>Vector cam</b> <br>
+                                    399 &#8377; <br>
+                                    2020-03-11
+                                </p>
+                            </div>
+                            <div class="order-row-address">
+                                <p>
+                                    this is address okay.
+                                </p>
+                            </div>
+                        </div>                        
+                </div> -->
+                <div class="fab-btn" id="back-to-top">
+                    <div class="fab-btn-content">
+                        <a href="#top">^</a>
+                    </div>
+                </div>
+                
             </div>
             
 
