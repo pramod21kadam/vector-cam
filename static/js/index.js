@@ -66,5 +66,5 @@ window.onscroll = function () {
 };
 
 function redirect_shop(){
-    window.location.href  += "shop.php";
+    window.location.href  = "http://127.0.0.1:8080/shop.php";
 }

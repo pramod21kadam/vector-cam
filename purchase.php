@@ -53,7 +53,7 @@
                 <div class="description">
                     <p>
                         <?php 
-                            readfile("static/descriptions/".$product["product_id"].".txt");
+                            readfile("static/descriptions/".$product["product_id"].".html");
                         ?>
                     </p>
                     

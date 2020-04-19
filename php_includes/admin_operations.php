@@ -65,7 +65,7 @@
 
             // saving description
             $file_tmp =$_FILES['description']['tmp_name'];
-            move_uploaded_file($file_tmp,"../static/descriptions/".$_POST["product_id"].".txt");
+            move_uploaded_file($file_tmp,"../static/descriptions/".$_POST["product_id"].".html");
 
             // saving banner_images
             for($i = 0; $i<count($_FILES["banner"]["name"]) ; $i++){
