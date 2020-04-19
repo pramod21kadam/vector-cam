@@ -65,3 +65,6 @@ window.onscroll = function () {
     }
 };
 
+function redirect_shop(){
+    window.location.href  += "shop.php";
+}

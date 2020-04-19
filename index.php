@@ -39,7 +39,7 @@
                     <div class="index-banner-buttons">
                         <div class="row">
                             <div class="col">
-                                <button type="button" id="shop-btn" class="banner-button" >Shop</button>
+                                <button type="button" id="shop-btn" class="banner-button" onclick="redirect_shop()">Shop</button>
                             </div>
                             <div class="col">
                                 <button type="button" id="learn-more-btn" class="banner-button" onclick="scroll_down()">Learn More</button>
