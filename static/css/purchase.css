@@ -1,0 +1,154 @@
+/* navbar */
+.navbar-custom {
+    font-weight: bolder;
+    height: 70px;
+    width: 100%;
+    background-color: white;
+}
+.navbar-animate-slidein{
+    animation: 1s ease-out 0s 1 slidein-top-bottom;
+}
+.navbar-custom .nav-link , .navbar-custom .navbar-brand{
+    font-weight: bold;
+    color: black;
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.navbar-custom .nav-link:hover{
+    color: rgba(0, 0, 0);
+}
+
+/* banner */    
+#banner{
+    height: 60vh;
+    width: 100%;
+    position: relative;
+}
+.banner-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    margin: auto;    
+}
+
+.banner-nav-btn{
+    opacity: 0.3;
+    font-size: 40px;
+    display: flex;
+    width: 100px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    align-items: center;
+    cursor: pointer;
+}
+.banner-nav-btn p{
+    width: 100%;
+    text-align: center;
+    transition: ease-in-out 0.3s;
+    color: white;
+    pointer-events: none;
+}
+#banner-nav-prev{
+    left: 0;
+}
+#banner-nav-prev:hover{
+    background: linear-gradient(to right , rgba(255, 255, 255, 0.133) , rgba(0, 0, 0, 0));
+}
+#banner-nav-next{
+    right: 0;
+}
+#banner-nav-next:hover{
+    background: linear-gradient(to left , rgba(255, 255, 255, 0.133) , rgba(0, 0, 0, 0));
+
+}
+.banner-nav-btn:active p{
+    transform: scale(0.8);
+}
+
+.indicator{
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: lightpink; */
+}
+.circle{
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.575);
+    border-radius: 100%;
+}
+.circle-active{
+    background-color: rgba(255, 255, 255, 0.575);
+}
+/* product details */
+#product-details{
+    width: 100%;
+    display: flex;
+    margin-top: 40px;
+}
+
+.description{
+    height: 100%;
+    flex: 2;
+    margin-left: 20px;
+    animation: slidein-left-right 1s;
+}
+
+.description p{
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+.purchase-section{
+    height: 100%;
+    flex: 1;
+    text-align: center;
+    animation: slidein-right-left 1s;
+}
+
+.purchase-section button{
+    width: 250px;
+    height: 60px;
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid rgba(219, 118, 23, 0.953);
+    color: rgba(219, 118, 23, 0.953);
+    border-radius: 5px;
+    transition: ease-in-out 0.3s;
+}
+
+.purchase-section #show-form-btn:hover{
+    background-color: rgba(219, 118, 23, 0.953);
+    color: white;
+}
+.purchase-section button:active{
+    transform: scaleX(0.9);
+}
+#purchase-form{
+    width: 100%;
+    text-align: left;
+
+}
+#purchase-form input{
+    width: 80%;
+    height: 60px;
+    margin: auto 20px 20px 40px;
+    text-align: l;
+}
+#cancle-btn{
+    left: 50px;
+    width: 150px;
+    margin: 20px 20px auto 40px;
+}
+#proceed-btn{
+    right: 40px;
+    width: 150px;
+    margin: 20px 10px auto 20px;
+    background-color: rgba(219, 118, 23, 0.953);
+    color: white;
+}

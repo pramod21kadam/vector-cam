@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add product</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/add_product.css">
+    </head>
+
+    <body>
+        
+        <form class="mx-auto" action="../php_includes/admin_operations.php?action=2" method="POST" enctype=multipart/form-data>    
+            <div class="row row-cols-2 form-group">
+                <div class="col-sm">
+                    <label for="p_id">Product id</label>
+                    <input type="text" class="form-control" id="p_id" name="product_id">
+                </div>
+                <div class="col-sm">
+                    <label for="p_name">Product name</label>
+                    <input type="text" class="form-control" id="p_name" name="product_name">
+                </div>
+            </div>
+
+            <div class="row row-cols-2 form-group">
+                <div class="col-sm">
+                    <label for="p_price">Price</label>
+                    <input type="text" class="form-control" id="p_price" name="product_price">
+                </div>
+                <div class="col-sm">
+                    <label for="p_avilability">Avilability</label>
+                    <input type="text" class="form-control" id="p_avilability" name="product_avilability" value="0">
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-sm">
+                    <label for="p_summary">Summary</label>
+                    <textarea class="form-control" id="p_summary" rows="3" name="product_summary"></textarea>         
+                </div>
+            </div>
+            
+            <div class="row  form-group">
+                <div class="col-sm custom-file">
+                    <input type="file" class="custom-file-input" id="thumbnail" name="thumbnail">
+                    <label class="custom-file-label" for="thumbnail">Upload thumbnail</label>
+                </div>
+            </div>
+
+            <div class="row  form-group">
+                <div class="col-sm custom-file">
+                    <input type="file" class="custom-file-input" id="description" name="description">
+                    <label class="custom-file-label" for="description">Uplod description</label>
+                </div>
+            </div>
+
+            <div class="row  form-group">
+                <div class="col-sm custom-file">
+                    <input type="file" class="custom-file-input" id="banner" name="banner[]" multiple>
+                    <label class="custom-file-label" for="banner">Uplod banner images</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </body>
+</html>

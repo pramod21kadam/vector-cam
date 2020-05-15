@@ -1,18 +1,62 @@
-#login_card{
-   width: 40%;
+#sign-in-card{
+    height: 700px;
+    max-width: 600px;
+    margin-top: 150px;
+
+    border: solid;
+    border-color: rgba(71, 71, 71, 0.287);
+    border-width: 1px;
+    border-radius: 7px;
 }
-#intent_card{
-    text-align: center;
-    width: 40%;
-    margin-bottom: 20px;
-    margin-top: 200px;
+
+#card-heading{
+    margin-top: 80px;
 }
-#sign_in{
-    border-bottom: solid;
-    padding: 20px;
-    cursor: pointer;
+
+.custom-form-input{
+    width: 500px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
-#sign_up{
-    padding: 20px;
-    cursor: pointer;
+.custom-input{
+    margin-top: 40px;
+}
+
+#sign-in-form{
+    margin-top: 40px;
+}
+
+#sign-in-submit{
+    width: 500px;
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#sign-in-btn{
+    text-align: right;
+}
+
+#sign-up-link{
+    position: relative;
+}
+
+#sign-up-link a{
+    position: absolute;
+    top: 10px;
+    text-decoration: none;
+    color: #1a73e8;
+}
+
+#sign-up-link a:hover{
+    color: #1a73e8;
+}
+
+.custom-btn{
+    width: 140px;
+    height: 50px;
+    background-color: #1a73e8;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
 }

@@ -1,0 +1,126 @@
+/* navbar */
+.navbar-custom {
+    font-weight: bolder;
+    height: 70px;
+    width: 100%;
+    background-color: white;
+}
+
+.navbar-animate-slidein{
+    animation: 1s ease-out 0s 1 slidein-top-bottom;
+}
+
+.navbar-custom .nav-link , .navbar-custom .navbar-brand{
+    font-weight: bold;
+    color: black;
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.navbar-custom .nav-link:hover{
+    color: rgba(0, 0, 0);
+}
+
+main{
+    display: flex;
+    margin: 30px 15px auto 15px;
+}
+
+/* account section */
+#account-section{
+    flex: 1;
+    margin: 30px auto 30px auto;
+    animation: slidein-left-right 1s;
+}
+#account-section h1{
+    font-weight: 600;
+    font-size: 2rem;
+}
+#account-section p{
+    font-weight: 300;
+    font-size: 1.3rem;
+}
+
+/* orders */
+#orders-section{
+    animation: slidein-right-left 1s;
+    flex: 2;
+}
+
+#orders-section h1{
+    font-weight: 600;
+    font-size: 2rem;
+    margin: 30px auto 30px auto;
+    text-align: center;
+}
+
+.order{
+    max-width: 1060px;
+    margin: 30px auto 30px auto;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(71, 71, 71, 0.287);
+    border-radius: 5px;
+    padding: 20px;
+    transition: ease 0.3s;
+}
+.order.hidden{
+    display: none;
+}
+.order:hover{
+    transform: scale(1.07);
+}
+
+.order .order-image{
+    height: 20vw;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.order .order-image img{
+    width: 60%;
+    margin: auto;
+}
+
+.order .order-details{
+    flex: 1;
+}
+
+.order-details h3{
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.order-details p{
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+.order-details button{
+    width: 160px;
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid rgba(219, 118, 23, 0.953);
+    border-radius: 5px;
+    color: rgba(219, 118, 23, 0.953);
+    transition: ease-in 0.3s;
+}
+
+.order-details button:hover{
+    background-color: rgba(219, 118, 23, 0.953);
+    color: white;
+}
+.order-details button:active{
+    transform: scale(0.9);
+}
+
+#top{
+    position: absolute;
+    top: 0;
+}
+
+#back-to-top::after{
+    content: "Up";
+    width: 40px;
+}
